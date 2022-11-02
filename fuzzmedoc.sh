@@ -24,7 +24,7 @@ function create_payloads () {
 
 function get_flag () {
     #ffuf -c -u "$URL"FUZZ -w fuzzmedoc.txt
-    while read line
+    while read -r line
     do
         length=$(curl --silent -i "${URL}${line}" |grep -E "Content-Length:" |awk '{print $2}' |tr -d '\r')
         if (( "$length" > 0 ))
