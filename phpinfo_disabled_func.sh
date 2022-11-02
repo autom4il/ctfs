@@ -42,7 +42,7 @@ dangerous_functions=(
     base64_decode
 )
 
-mapfile -t disabled_functions < <(curl --silent "${URL}" |egrep "disable_functions<\/td><td class=\"v\">.*?<" |awk -F '"v">|</' '{print $3}' |tr -s "," " ")
+mapfile -t disabled_functions < <(curl --silent "${URL}" |grep -E "disable_functions<\/td><td class=\"v\">.*?<" |awk -F '"v">|</' '{print $3}' |tr -s "," " ")
 
 #echo "${disabled_functions[*]}"
 
