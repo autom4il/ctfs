@@ -44,8 +44,6 @@ dangerous_functions=(
 
 mapfile -t disabled_functions < <(curl --silent "${URL}" |grep -E "disable_functions<\/td><td class=\"v\">.*?<" |awk -F '"v">|</' '{print $3}' |tr -s "," " ")
 
-#echo "${disabled_functions[*]}"
-
 echo "[+] PHP available functions!"
 for i in ${dangerous_functions[*]}
 do
