@@ -47,6 +47,7 @@ mapfile -t disabled_functions < <(curl --silent "${URL}" |grep -E "disable_funct
 echo "[+] PHP available functions!"
 for i in ${dangerous_functions[*]}
 do
+    # shellcheck disable=SC2076
     if [[  ! "${disabled_functions[*]}" =~ "$i"  ]]
     then
         echo "${i}"
